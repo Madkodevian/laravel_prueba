@@ -9,6 +9,8 @@ class Books extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['isbn', 'titulo', 'paginas', 'curso', 'asignatura'];
+
     public function author(){
         return $this->belongsTo(Author::class);
     }
