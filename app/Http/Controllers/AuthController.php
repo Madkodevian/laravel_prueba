@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -36,5 +37,23 @@ class AuthController extends Controller
         }else{
             return response()->json(['message' => 'Login error'], 401);
         }
+    }
+
+    public function user(Request $request){
+        $user = $request->user();
+
+        if($user){
+            return response()->json([
+                'name' => $user->name,
+                'email' => $user->email,
+            ]);
+        }else{
+            return response()->json(['message' => 'Usuario no utenticado'], 401);
+        }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return response()->json(['message' => 'Ha salido correctamente']);
     }
 }
