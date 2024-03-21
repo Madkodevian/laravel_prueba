@@ -80,4 +80,10 @@ return [
         'verify_csrf_token' => App\Http\Middleware\VerifyCsrfToken::class,
     ],
 
+    'paths' => [
+        'api/*',
+        'login',
+        'logout',
+    ]
+
 ];
